@@ -1,3 +1,4 @@
+require("dotenv").config();
 const dns = require("dns");
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
@@ -21,7 +22,6 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
 const routes = require("./routes/routes");
 app.use("/api", routes);
 
@@ -32,7 +32,6 @@ app.listen(PORT, () => {
 var mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 var userArgs = process.argv.slice(2);
-var mongoURL = userArgs[0];
 
 mongoose.connect(mongoURL);
 mongoose.Promise = global.Promise;
